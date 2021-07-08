@@ -1,15 +1,26 @@
-<!--  v1.0 https://trmsc1.wordpress.com   -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-    // <![CDATA[
-    $(document).ready(function() {
-        var vorname = $('span.usertext.mr-1').text().split(/\s+/)[1];
-        //alert(vorname);
-        var vorangestellter_text = 'Hallo ';
-        var nachfolgender_text = '! Schön, dass du da bist!';
-        var neuer_textinhalt = vorangestellter_text + vorname + nachfolgender_text;
-        console.log(neuer_textinhalt);
-        $('div[role=main]').prepend('<h3><p style="color:#3d736e;">' + neuer_textinhalt + '</p></h3>');
-    });
-    // ]] >
+<!-- individual greeting v.2.0 - Copyright (C) 2021, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
+<!-- THIS CODE SHOWS A TEXT BEFORE AND AFTER THE INDIVIDUAL USERNAME ON TOP OF THE COURSE-->
+<script>
+    window.onload = function() {
+        jquery_load_check_interval = setInterval(function() {
+            if (window.jQuery) {
+                individualGreeting();
+                console.log("jquery successfully loaded...");
+                console.log($.fn.jquery); // <== version of jQuery
+                clearInterval(jquery_load_check_interval);
+            } else {
+                console.log("new try to load jquery...");
+            }
+        }, 150);
+
+        function individualGreeting() {
+            var fstName = $('span.usertext.mr-1').text().split(/\s+/)[1]; /*IF THE LASTNAME WILL BE DISPLAYED TRY [0} INSTEAD OF [1] IN THIS LINE */
+            var textBefore = 'Hallo '; /* THE TEXT DISPLAYED BEFORE THE USERNAME */
+            var textAfter = '! Schön, dass du da bist!'; /* THE TEXT DISPLAYED AFTER THE USERNAME */
+            var fullText = textBefore + fstName + textAfter;
+            console.log(fullText);
+            $('div[role=main]').prepend('<h2>' + fullText + '</h2>');
+        }
+    };
 </script>
