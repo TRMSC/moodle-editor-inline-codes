@@ -1,0 +1,15 @@
+<!--  v1.0 https://trmsc1.wordpress.com   -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    // <![CDATA[
+    $(document).ready(function() {
+        var vorname = $('span.usertext.mr-1').text().split(/\s+/)[1];
+        //alert(vorname);
+        var vorangestellter_text = 'Hallo ';
+        var nachfolgender_text = '! Schön, dass du da bist!';
+        var neuer_textinhalt = vorangestellter_text + vorname + nachfolgender_text;
+        console.log(neuer_textinhalt);
+        $('div[role=main]').prepend('<h3><p style="color:#3d736e;">' + neuer_textinhalt + '</p></h3>');
+    });
+    // ]] >
+</script>
