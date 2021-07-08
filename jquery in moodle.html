@@ -1,11 +1,22 @@
-<!-- jquery in moodle v.1.0 - Copyright (C) 2021, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- jquery in moodle v.2.0 - Copyright (C) 2021, TRMSC - https://trmsc1.wordpress.com/ -->
 <!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
+<script>
+    window.onload = function() {
+        jquery_load_check_interval = setInterval(function() {
+            if (window.jQuery) {
+                functionname(); /* NAME OF YOUR FUNCTION INSTEAD OF 'FUNCTIONSNAME' */
+                console.log("jQuery geladen...");
+                console.log($.fn.jquery); // <== jQuery Version
+                clearInterval(jquery_load_check_interval);
+            } else {
+                console.log("neuer Versuch jQuery zu laden...");
+            }
+        }, 150);
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
+        function functionname() {  /* NAME OF YOUR FUNCTION INSTEAD OF 'FUNCTIONSNAME' */
 
-        /* Here you can code jQuery */
+            /* Here you can code jQuery */
 
-    });
+        }
+    };
 </script>
