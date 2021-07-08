@@ -1,18 +1,30 @@
-<!--  v1.0 https://trmsc1.wordpress.com   -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-    // <![CDATA[
-    $(document).ready(function() {          
-        var vorname = $('span.usertext.mr-1').text().split(/\s+/)[1];   
-        var code;         
-        if (vorname == "Max")
-            code = "XXX";
-        else if (vorname == "Mia")
-            code = "YYY";
- 
-        //document.getElementById("anrede").innerHTML = vorname;    
-        document.getElementById("codeAusgabe").innerHTML = code;  
-    });
-    // ]]>
+<!-- individual message v.2.0 - Copyright (C) 2021, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
+<!-- THIS CODE SHOWS A TEXT BEFORE AND AFTER THE INDIVIDUAL USERNAME ON TOP OF THE COURSE-->
+<script>
+    window.onload = function() {
+        jquery_load_check_interval = setInterval(function() {
+            if (window.jQuery) {
+                individualMessage();
+                console.log("jquery successfully loaded...");
+                console.log($.fn.jquery); // <== version of jQuery
+                clearInterval(jquery_load_check_interval);
+            } else {
+                console.log("new try to load jquery...");
+            }
+        }, 150);
+
+        function individualMessage() {
+            var fstName = $('span.usertext.mr-1').text().split(/\s+/)[1]; /*IF THE LASTNAME WILL BE DISPLAYED TRY [0} INSTEAD OF [1] IN THIS LINE */
+            var userMessage;
+            if (fstName == "Max")
+                userMessage = "Text für Max";
+            if (fstName == "Mia")
+                userMessage = "Text für Mia";
+            /* COPY THE TWO LINES ABOVE FOR MORE INDIVIDUAL TEXTS */
+            document.getElementById("msgOutput").innerHTML = userMessage;
+        }
+    };
 </script>
-<p style="font-family: comic sans ms">Deine persönliche Nachricht ist: <strong><span id="codeAusgabe" style="color: rgb(152, 202, 62);"></span></strong> .</p>
+
+<p>Deine persönliche Nachricht ist: <strong><span id="msgOutput"></span></strong></p> /* THE <span></span>-PART IS THE INDIVIDUAL MESSAGE */
