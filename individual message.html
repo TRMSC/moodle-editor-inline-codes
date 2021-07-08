@@ -1,0 +1,18 @@
+<!--  v1.0 https://trmsc1.wordpress.com   -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    // <![CDATA[
+    $(document).ready(function() {          
+        var vorname = $('span.usertext.mr-1').text().split(/\s+/)[1];   
+        var code;         
+        if (vorname == "Max")
+            code = "XXX";
+        else if (vorname == "Mia")
+            code = "YYY";
+ 
+        //document.getElementById("anrede").innerHTML = vorname;    
+        document.getElementById("codeAusgabe").innerHTML = code;  
+    });
+    // ]]>
+</script>
+<p style="font-family: comic sans ms">Deine persönliche Nachricht ist: <strong><span id="codeAusgabe" style="color: rgb(152, 202, 62);"></span></strong> .</p>
