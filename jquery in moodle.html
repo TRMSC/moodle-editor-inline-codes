@@ -5,11 +5,11 @@
         jquery_load_check_interval = setInterval(function() {
             if (window.jQuery) {
                 functionname(); /* NAME OF YOUR FUNCTION INSTEAD OF 'FUNCTIONSNAME' */
-                console.log("jQuery geladen...");
-                console.log($.fn.jquery); // <== jQuery Version
+                console.log("jquery successfully loaded...");
+                console.log($.fn.jquery); // <== version of jQuery
                 clearInterval(jquery_load_check_interval);
             } else {
-                console.log("neuer Versuch jQuery zu laden...");
+                console.log("new try to load jquery...");
             }
         }, 150);
 
