@@ -1,0 +1,15 @@
+<!--  v1.1 https://trmsc1.wordpress.com   -->
+<p>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+   <script type="text/javascript">
+       // <![CDATA[
+       $(document).ready(function() {
+           var vorname = $('span.usertext.mr-1').text().split(/\s+/)[1];
+           document.getElementById("anrede1").innerHTML = vorname;
+           document.getElementById("anrede2").innerHTML = vorname;
+       });
+       // ]]>
+   </script>
+</p>
+<p>Bitte bearbeite die Aufgabe <span id="anrede1"></span>.</p>
+<p>Bitte bearbeite auch die Aufgabe <span id="anrede2"></span>.</p>
