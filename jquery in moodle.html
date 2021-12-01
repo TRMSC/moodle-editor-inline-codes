@@ -1,22 +1,22 @@
-<!-- jquery in moodle v.2.0 - Copyright (C) 2021, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- jQuery in Moodle v.3.0 - Copyright (C) 2021, TRMSC - https://trmsc1.wordpress.com/ -->
 <!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
+
 <script>
-    window.onload = function() {
-        jquery_load_check_interval = setInterval(function() {
-            if (window.jQuery) {
-                functionname(); /* NAME OF YOUR FUNCTION INSTEAD OF 'FUNCTIONSNAME' */
-                console.log("jquery successfully loaded...");
-                console.log($.fn.jquery); // <== version of jQuery
-                clearInterval(jquery_load_check_interval);
+    window.addEventListener( 'load', function( event ) {
+        let jquery_load_check_interval = setInterval( function() {
+            if ( window.jQuery ) {
+                console.log( $.fn.jquery + ' jquery successfully loaded...' );
+                functionname(); /* NAME OF YOUR FUNCTION INSTEAD OF 'FUNCTIONSNAME' (SAME AS BELOW!) */
+                clearInterval( jquery_load_check_interval );
             } else {
-                console.log("new try to load jquery...");
+                console.log( 'new try to load jquery...' );
             }
         }, 150);
 
-        function functionname() {  /* NAME OF YOUR FUNCTION INSTEAD OF 'FUNCTIONSNAME' */
-
-            /* Here you can code jQuery */
-
+        function functionname() { /* NAME OF YOUR FUNCTION INSTEAD OF 'FUNCTIONSNAME' (SAME AS ABOVE!) */
+            
+            /* HERE YOU CAN CODE JQUERY */
+            
         }
-    };
+    }, false );
 </script>
