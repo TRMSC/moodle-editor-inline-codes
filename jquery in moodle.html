@@ -1,4 +1,4 @@
-<!-- jQuery in Moodle v.3.0 - Copyright (C) 2021, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- jQuery in Moodle v.3.1 - Copyright (C) 2021, TRMSC - https://trmsc1.wordpress.com/ -->
 <!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
 <!-- Thanks to Norman Seeliger (Twitter: @nseelinger1) for great help! -->
 
@@ -6,15 +6,17 @@
     window.addEventListener( 'load', function( event ) {
         let jquery_load_check_interval = setInterval( function() {
             if ( window.jQuery ) {
-                console.log( $.fn.jquery + ' jquery successfully loaded...' );
+                console.log( 'jQuery in Moodle: jQuery v.' + $.fn.jquery + ' loaded' );
+                console.log( 'jQuery in Moodle: v.3.1' );
                 functionname(); /* NAME OF YOUR FUNCTION INSTEAD OF 'FUNCTIONSNAME' (SAME AS BELOW!) */
                 clearInterval( jquery_load_check_interval );
             } else {
-                console.log( 'new try to load jquery...' );
+                console.log( 'jQuery in Moodle: new try to load jquery...' );
             }
         }, 150);
 
         function functionname() { /* NAME OF YOUR FUNCTION INSTEAD OF 'FUNCTIONSNAME' (SAME AS ABOVE!) */
+            console.log( 'jQuery in Moodle: function started' );
             
             /* HERE YOU CAN CODE JQUERY */
             
