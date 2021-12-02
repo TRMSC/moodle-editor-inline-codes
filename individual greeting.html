@@ -1,28 +1,28 @@
-<!-- Individual Greeting v.2.0.2 - Copyright (C) 2021, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- Individual Greeting v.2.1 - Copyright (C) 2021, TRMSC - https://trmsc1.wordpress.com/ -->
 <!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
-
+ 
 <!-- THIS CODE SHOWS A TEXT BEFORE AND AFTER THE INDIVIDUAL USERNAME ON TOP OF THE COURSE-->
-
+ 
 <script>
-    window.onload = function() {
-        jquery_load_check_interval = setInterval(function() {
-            if (window.jQuery) {
-                individualGreeting();
-                console.log("jquery successfully loaded...");
-                console.log($.fn.jquery); // <== version of jQuery
-                clearInterval(jquery_load_check_interval);
+    window.addEventListener( 'load', function( event ) {
+        let jquery_load_check_interval = setInterval( function() {
+            if ( window.jQuery ) {
+                console.log( 'Individual Greeting: jQuery v.' + $.fn.jquery + ' loaded' );
+                console.log( 'Individual Greeting: v.2.1' );
+                setGreeting(); /* NAME OF YOUR FUNCTION INSTEAD OF 'FUNCTIONSNAME' (SAME AS BELOW!) */
+                clearInterval( jquery_load_check_interval );
             } else {
-                console.log("new try to load jquery...");
+                console.log( 'new try to load jquery...' );
             }
         }, 150);
-
-        function individualGreeting() {
+ 
+        function setGreeting() {
             var fstName = $('span.usertext.mr-1').text().split(/\s+/)[1]; /*IF THE LASTNAME WILL BE DISPLAYED TRY [0} INSTEAD OF [1] IN THIS LINE */
             var textBefore = 'Hallo '; /* THE TEXT DISPLAYED BEFORE THE USERNAME */
             var textAfter = '! Schön, dass du da bist!'; /* THE TEXT DISPLAYED AFTER THE USERNAME */
             var fullText = textBefore + fstName + textAfter;
-            console.log(fullText);
+            console.log('Individual Greeting: ' + fullText);
             $('div[role=main]').prepend('<h2>' + fullText + '</h2>');
         }
-    };
+    }, false );
 </script>
