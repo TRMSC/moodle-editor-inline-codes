@@ -1,32 +1,34 @@
-<!-- Individual mMssage v.2.0.1 - Copyright (C) 2021, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- Individual Message v.2.1 - Copyright (C) 2021, TRMSC - https://trmsc1.wordpress.com/ -->
 <!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
 
-<!-- THIS CODE SHOWS A TEXT BEFORE AND AFTER THE INDIVIDUAL USERNAME ON TOP OF THE COURSE-->
+<!-- THIS CODE SHOWS AN INDIVIDUAL TEXT FOR USERS ON BASIS OF THEIR NAMES -->
 
 <script>
-    window.onload = function() {
-        jquery_load_check_interval = setInterval(function() {
-            if (window.jQuery) {
-                individualMessage();
-                console.log("jquery successfully loaded...");
-                console.log($.fn.jquery); // <== version of jQuery
-                clearInterval(jquery_load_check_interval);
+    window.addEventListener( 'load', function( event ) {
+        let jquery_load_check_interval = setInterval( function() {
+            if ( window.jQuery ) {
+                console.log( 'Individual Message: jQuery v.' + $.fn.jquery + ' loaded' );
+                console.log( 'Individual Message: v.2.1' );
+                createMessage();
+                clearInterval( jquery_load_check_interval );
             } else {
-                console.log("new try to load jquery...");
+                console.log( 'Individual Message: new try to load jquery...' );
             }
         }, 150);
 
-        function individualMessage() {
+        function createMessage() {
             var fstName = $('span.usertext.mr-1').text().split(/\s+/)[1]; /*IF THE LASTNAME WILL BE DISPLAYED TRY [0} INSTEAD OF [1] IN THIS LINE */
             var userMessage;
             if (fstName == "Max")
                 userMessage = "Text für Max";
             if (fstName == "Mia")
                 userMessage = "Text für Mia";
-            /* COPY THE TWO LINES ABOVE FOR MORE INDIVIDUAL TEXTS */
+            /* COPY THE TWO RESPECTIVELY LINES ABOVE FOR MORE INDIVIDUAL TEXTS */
             document.getElementById("msgOutput").innerHTML = userMessage;
+            console.log( 'Individual Message: create messages' );
         }
-    };
+    }, false );
 </script>
 
-<p>Deine persönliche Nachricht ist: <strong><span id="msgOutput"></span></strong></p> /* THE <span></span>-PART IS THE INDIVIDUAL MESSAGE */
+<p>Deine persönliche Nachricht ist: <strong><span id="msgOutput"></span></strong></p> 
+<!-- THE <span id="msgOutput"></span>-PART IS THE INDIVIDUAL MESSAGE -->
