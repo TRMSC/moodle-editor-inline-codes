@@ -1,4 +1,4 @@
-<!-- Individual Message v.2.1 - Copyright (C) 2021, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- Individual Message v.2.2 - Copyright (C) 2021, TRMSC - https://trmsc1.wordpress.com/ -->
 <!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
 
 <!-- THIS CODE SHOWS AN INDIVIDUAL TEXT FOR USERS ON BASIS OF THEIR NAMES -->
@@ -8,7 +8,7 @@
         let jquery_load_check_interval = setInterval( function() {
             if ( window.jQuery ) {
                 console.log( 'Individual Message: jQuery v.' + $.fn.jquery + ' loaded' );
-                console.log( 'Individual Message: v.2.1' );
+                console.log( 'Individual Message: v.2.2' );
                 createMessage();
                 clearInterval( jquery_load_check_interval );
             } else {
@@ -18,12 +18,16 @@
 
         function createMessage() {
             var fstName = $('span.usertext.mr-1').text().split(/\s+/)[1]; /*IF THE LASTNAME WILL BE DISPLAYED TRY [0} INSTEAD OF [1] IN THIS LINE */
+            var lstName = $('span.usertext.mr-1').text().split(/\s+/)[0]; /*IF THE FIRSTNAME WILL BE DISPLAYED TRY [1} INSTEAD OF [0] IN THIS LINE */
             var userMessage;
+            
             if (fstName == "Max")
                 userMessage = "Text für Max";
             if (fstName == "Mia")
                 userMessage = "Text für Mia";
             /* COPY THE TWO RESPECTIVELY LINES ABOVE FOR MORE INDIVIDUAL TEXTS */
+            /* USE lstName INSTEAD OF fstName IF YOU WANT TO CHOOSE THE LASTNAME */
+            
             document.getElementById("msgOutput").innerHTML = userMessage;
             console.log( 'Individual Message: create messages' );
         }
