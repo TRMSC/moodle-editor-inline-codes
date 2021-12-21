@@ -1,0 +1,29 @@
+<!-- New Lines Board v.1.0 - Copyright (C) 2021, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
+
+<!-- PUT THIS IN THE ACTIVITY DESCRIPTION<> OR A TEXTBLOCK<> WITHIN THE ACTIVITY BOARD ( HTML-MODE<> ) -->
+<!-- EVERY # WILL BETRANSFORMED INTO A NEW LINE-->
+
+<script>
+    window.addEventListener( 'load', function( event ) {
+        let jquery_load_check_interval = setInterval( function() {
+            if ( window.jQuery ) {
+                console.log( 'jQuery in Moodle: jQuery v.' + $.fn.jquery + ' loaded' );
+                console.log( 'jQuery in Moodle: v.3.1' );
+                addBr(); 
+                clearInterval( jquery_load_check_interval );
+            } else {
+                console.log( 'jQuery in Moodle: new try to load jquery...' );
+            }
+        }, 150);
+
+        function addBr() { 
+            console.log( 'jQuery in Moodle: function started' );           
+            $(".mod_board_note_text").each(function() {
+                var text = $(this).text();
+                text = text.replace("#", "<br>");
+                $(this).html(text);
+            });   
+        }
+    }, false );
+</script>
