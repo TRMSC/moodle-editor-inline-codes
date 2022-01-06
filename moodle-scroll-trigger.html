@@ -1,0 +1,58 @@
+<!-- Moodle Scroll Trigger v.0.1 - Copyright (C) 2022, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
+
+<!-- TESTED ONLY IN MOODLE 3.9.11 CLASSIC THEME -->
+<!-- PUT THE CODE INTO A TEXTBLOCK OR TEXTFIELD (HTML-MODE) ON COURSE-SITE -->
+
+<script>
+    window.addEventListener( 'load', function( event ) {
+        let jquery_load_check_interval = setInterval( function() {
+            if ( window.jQuery ) {
+                console.log( 'jQuery in Moodle: jQuery v.' + $.fn.jquery + ' loaded' );
+                console.log( 'jQuery in Moodle: v.3.1' );
+
+
+		    /* REMOVE THE TWO SLASHS AT THE BEGINNING OF A LINE TO ACTIVATE ELEMENT FOR SCROLL TRIGGERING */
+
+		    // controlTrigger(".activity"); /* SCROLL TRIGGER FOR ALL ACTIVITIES */
+		    // controlTrigger(".activityinstance"); /* SCROLL TRIGGER FOR ALL ACTIVITIY HEADERS */
+		    // controlTrigger(".sectionname"); /* SCROLL TRIGGER FOR ALL TOPIC HEADERS */
+		    // controlTrigger(".gridiconcontainer"); /* SCROLL TRIGGER FOR ALL GRIDS */
+
+		    // controlTrigger("p"); /* SCROLL TRIGGER FOR ALL PARAGRAPHS */
+		    // controlTrigger("h1"); /* SCROLL TRIGGER FOR ALL HEADERS TYPE H1 */
+		    // controlTrigger("h2"); /* SCROLL TRIGGER FOR ALL HEADERS TYPE H1 */
+		    // controlTrigger("h3"); /* SCROLL TRIGGER FOR ALL HEADERS TYPE H1 */
+		    // controlTrigger("h4"); /* SCROLL TRIGGER FOR ALL HEADERS TYPE H1 */
+		    // controlTrigger("h5"); /* SCROLL TRIGGER FOR ALL HEADERS TYPE H1 */
+		    // controlTrigger("h6"); /* SCROLL TRIGGER FOR ALL HEADERS TYPE H1 */
+
+		    // controlTrigger("#ID WITH #"); /* COPY AND ADJUST THIS LINE FOR OWN SCROLL TRIGGERED ELEMENTS */
+
+
+                clearInterval( jquery_load_check_interval );
+            } else {
+                console.log( 'jQuery in Moodle: new try to load jquery...' );
+            }
+        }, 150);
+
+        function controlTrigger(trg) {
+            console.log('Start scroll-trigger for ' + trg);
+            jQuery(trg).css("transition", "all 0.7s ease-in 0s");
+            jQuery(window).scroll(function() {
+               var hT = jQuery(trg).offset().top,
+                   hH = jQuery(trg).outerHeight(),
+                   wH = jQuery(window).height(),
+                   wS = jQuery(this).scrollTop();
+               if ((wS > (hT-600)) && (wS < (hT+hH-180))) {
+                   jQuery(trg).css("opacity", "1");
+                   jQuery(trg).css("transform", "translate(0px, 0px)");
+               } else {
+                   jQuery(trg).css("opacity", "0");
+                   jQuery(trg).css("transform", "translate(-50px, 0px)");
+               }
+            });
+        }
+      
+    }, false );
+</script>
