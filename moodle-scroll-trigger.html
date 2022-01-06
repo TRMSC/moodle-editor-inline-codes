@@ -1,4 +1,4 @@
-<!-- Moodle Scroll Trigger v.0.1 - Copyright (C) 2022, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- Moodle Scroll Trigger v.0.2 - Copyright (C) 2022, TRMSC - https://trmsc1.wordpress.com/ -->
 <!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
 
 <!-- TESTED ONLY IN MOODLE 3.9.11 CLASSIC THEME -->
@@ -11,24 +11,8 @@
                 console.log( 'jQuery in Moodle: jQuery v.' + $.fn.jquery + ' loaded' );
                 console.log( 'jQuery in Moodle: v.3.1' );
 
-
-		    /* REMOVE THE TWO SLASHS AT THE BEGINNING OF A LINE TO ACTIVATE ELEMENT FOR SCROLL TRIGGERING */
-
-		    // controlTrigger(".activity"); /* SCROLL TRIGGER FOR ALL ACTIVITIES */
-		    // controlTrigger(".activityinstance"); /* SCROLL TRIGGER FOR ALL ACTIVITIY HEADERS */
-		    // controlTrigger(".sectionname"); /* SCROLL TRIGGER FOR ALL TOPIC HEADERS */
-		    // controlTrigger(".gridiconcontainer"); /* SCROLL TRIGGER FOR ALL GRIDS */
-
-		    // controlTrigger("p"); /* SCROLL TRIGGER FOR ALL PARAGRAPHS */
-		    // controlTrigger("h1"); /* SCROLL TRIGGER FOR ALL HEADERS TYPE H1 */
-		    // controlTrigger("h2"); /* SCROLL TRIGGER FOR ALL HEADERS TYPE H1 */
-		    // controlTrigger("h3"); /* SCROLL TRIGGER FOR ALL HEADERS TYPE H1 */
-		    // controlTrigger("h4"); /* SCROLL TRIGGER FOR ALL HEADERS TYPE H1 */
-		    // controlTrigger("h5"); /* SCROLL TRIGGER FOR ALL HEADERS TYPE H1 */
-		    // controlTrigger("h6"); /* SCROLL TRIGGER FOR ALL HEADERS TYPE H1 */
-
-		    // controlTrigger("#ID WITH #"); /* COPY AND ADJUST THIS LINE FOR OWN SCROLL TRIGGERED ELEMENTS */
-
+		    /* REMOVE THE TWO SLASHS AT THE BEGINNING OF THE CONTROL-LINE BELOW AND ADD AN ID TO ACTIVATE ELEMENT FOR SCROLL TRIGGERING */
+		    // controlTrigger("#ID WITH #"); /* COPY AND ADJUST THIS LINE FOR MORE SCROLL TRIGGERED ELEMENTS */
 
                 clearInterval( jquery_load_check_interval );
             } else {
