@@ -1,4 +1,4 @@
-<!-- Moodle Scroll Trigger v.0.4 - Copyright (C) 2022, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- Moodle Scroll Trigger v.0.4.1 - Copyright (C) 2022, TRMSC - https://trmsc1.wordpress.com/ -->
 <!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
 
 <!-- TESTED ONLY IN MOODLE 3.9.11 CLASSIC THEME -->
@@ -23,7 +23,7 @@
         }, 150);
 
         function triggerFromLeft(trg) {
-            console.log('Start scroll-trigger for ' + trg);
+            console.log('Start scroll-trigger from left for ' + trg);
             jQuery(trg).css("transition", "all 0.7s ease-in 0s");
             jQuery(window).scroll(function() {
                var hT = jQuery(trg).offset().top,
@@ -41,7 +41,7 @@
         }
 	    
         function triggerFromRight(trg) {
-            console.log('Start scroll-trigger for ' + trg);
+            console.log('Start scroll-trigger from right for ' + trg);
             jQuery(trg).css("transition", "all 0.7s ease-in 0s");
             jQuery(window).scroll(function() {
                var hT = jQuery(trg).offset().top,
