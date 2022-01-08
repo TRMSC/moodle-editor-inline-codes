@@ -1,4 +1,4 @@
-<!-- Moodle Scroll Trigger v.0.5 - Copyright (C) 2022, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- Moodle Scroll Trigger v.0.6 - Copyright (C) 2022, TRMSC - https://trmsc1.wordpress.com/ -->
 <!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
 
 <!-- TESTED ONLY IN MOODLE 3.9.11 CLASSIC THEME -->
@@ -9,16 +9,35 @@
         let jquery_load_check_interval = setInterval(function() {
             if (window.jQuery) {
                 console.log('jQuery in Moodle: jQuery v.' + $.fn.jquery + ' loaded');
-                console.log('Moodle Scroll Trigger v.0.5');
+                console.log('Moodle Scroll Trigger v.0.6');
                 triggerIdCount = 0;
 
-                /* REMOVE THE TWO SLASHS AT THE BEGINNING OF THE LINE BELOW. */
-		/* ADD A SELECTOR AND DIRECTION TO ACTIVATE ELEMENT FOR SCROLL TRIGGERING */
+		/* PREDEFINED ELEMENTS ✨👇 */
+	        /* REMOVE THE TWO SLASHS AT THE BEGINNING OF A LINE TO ACTIVATE ELEMENTS FOR SCROLL TRIGGERING */
+		/* YOU CAN CHANGE THE DIRECTION FROM LEFT TO RIGHT */
+
+		    // scrollTrigger(".modtype_label", "left"); /* TRIGGER ALL TEXTFIELDS */
+		    // scrollTrigger(".contentafterlink", "left"); /* TRIGGER ALL DESCRIPTIONS */
+		    // scrollTrigger(".activity", "left"); /* TRIGGER ALL ACTIVITIES */
+		    // scrollTrigger(".activityinstance", "left"); /* TRIGGER ALL ACTIVITIY HEADERS */
+		    // scrollTrigger(".sectionname", "left"); /* TRIGGER ALL TOPIC HEADERS */
+		    // scrollTrigger(".gridiconcontainer", "left"); /* TRIGGER ALL GRIDS */
+
+		    // scrollTrigger("#region-main p", "left"); /* TRIGGER ALL PARAGRAPHS */
+		    // scrollTrigger("#region-main h1", "left"); /* TRIGGER ALL HEADERS TYPE H1 */
+		    // scrollTrigger("#region-main h2", "left"); /* TRIGGER ALL HEADERS TYPE H2 */
+		    // scrollTrigger("#region-main h3", "left"); /* TRIGGER ALL HEADERS TYPE H3 */
+		    // scrollTrigger("#region-main h4", "left"); /* TRIGGER ALL HEADERS TYPE H4 */
+		    // scrollTrigger("#region-main h5", "left"); /* TRIGGER ALL HEADERS TYPE H5 */
+		    // scrollTrigger("#region-main h6", "left"); /* TRIGGER ALL HEADERS TYPE H6 */
+		    
+		/* OR TRIGGER OWN ELEMENTS 🤓👇 */
+		/* ADD A SELECTOR + DIRECTION AND REMOVE THE TWO SLASHS TO ACTIVATE ELEMENT FOR SCROLL TRIGGERING */
 		/* COPY THE LINE FOR TRIGGERING MORE ELEMENTS */
 		    
-                // scrollTrigger("#id .class or element", "left or right"); 
+                    // scrollTrigger("#id .class or element", "left or right"); 
 
-
+		    
                 clearInterval(jquery_load_check_interval);
             } else {
                 console.log('jQuery in Moodle: new try to load jquery...');
@@ -47,6 +66,7 @@
         }
 
         function startTrigger(trg, trgDir) {
+            trg = "#region-main " + trg;
             console.log("Start scroll-trigger from " + trgDir + " for " + trg);
             jQuery(trg).css("transition", "all 0.7s ease-in 0s");
             jQuery(window).scroll(function() {
