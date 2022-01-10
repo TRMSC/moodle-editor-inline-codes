@@ -1,4 +1,4 @@
-<!-- Moodle Scroll Trigger v.1.0.1 - Copyright (C) 2022, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- Moodle Scroll Trigger v.1.0.2 - Copyright (C) 2022, TRMSC - https://trmsc1.wordpress.com/ -->
 <!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
 
 <!-- TESTED IN MOODLE 3.9.11 (CLASSIC) AND MOODLE 3.11.4+ (BOOST) -->
@@ -9,7 +9,7 @@
         let jquery_load_check_interval = setInterval(function() {
             if (window.jQuery) {
                 console.log('jQuery in Moodle: jQuery v.' + $.fn.jquery + ' loaded');
-                console.log('Moodle Scroll Trigger v.1.0.1');
+                console.log('Moodle Scroll Trigger v.1.0.2');
                 triggerIdCount = 0;
 
 		/* PREDEFINED ELEMENTS ✨👇 */
@@ -79,7 +79,7 @@
                     hH = jQuery(trg).outerHeight(),
                     wH = jQuery(window).height(),
                     wS = jQuery(this).scrollTop();
-                if ((wS > (hT - 600)) && (wS < (hT + hH - 180))) {
+                if ((wS > (hT - 600)) && (wS < (hT + hH - 160))) {
                     jQuery(trg).css("opacity", "1");
                     jQuery(trg).css("transform", "translate(0px, 0px)");
                 } else {
