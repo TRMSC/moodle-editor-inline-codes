@@ -1,4 +1,4 @@
-<!-- Moodle Scroll Trigger v.1.0 - Copyright (C) 2022, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- Moodle Scroll Trigger v.1.0.1 - Copyright (C) 2022, TRMSC - https://trmsc1.wordpress.com/ -->
 <!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
 
 <!-- TESTED IN MOODLE 3.9.11 (CLASSIC) AND MOODLE 3.11.4+ (BOOST) -->
@@ -9,7 +9,7 @@
         let jquery_load_check_interval = setInterval(function() {
             if (window.jQuery) {
                 console.log('jQuery in Moodle: jQuery v.' + $.fn.jquery + ' loaded');
-                console.log('Moodle Scroll Trigger v.1.0');
+                console.log('Moodle Scroll Trigger v.1.0.1');
                 triggerIdCount = 0;
 
 		/* PREDEFINED ELEMENTS ✨👇 */
@@ -45,6 +45,10 @@
         }, 150);
 
         function scrollTrigger(trg, trgDir) {
+            if (jQuery(trg).val() != 0) {
+                console.log("Scroll Trigger: " + trg + " doesn't exist");
+                return;
+            }
             if (trg.includes("#")) {
                 console.log("Scroll Trigger found: " + trg);
                 startTrigger(trg, trgDir);
@@ -63,6 +67,7 @@
                     }
                 });
             }
+            return;
         }
 
         function startTrigger(trg, trgDir) {
