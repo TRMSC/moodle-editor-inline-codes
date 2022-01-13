@@ -1,4 +1,4 @@
-<!-- Moodle Scroll Trigger v.1.0.2 - Copyright (C) 2022, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- Moodle Scroll Trigger v.1.0.3 - Copyright (C) 2022, TRMSC - https://trmsc1.wordpress.com/ -->
 <!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
 
 <!-- TESTED IN MOODLE 3.9.11 (CLASSIC) AND MOODLE 3.11.4+ (BOOST) -->
@@ -9,18 +9,19 @@
         let jquery_load_check_interval = setInterval(function() {
             if (window.jQuery) {
                 console.log('jQuery in Moodle: jQuery v.' + $.fn.jquery + ' loaded');
-                console.log('Moodle Scroll Trigger v.1.0.2');
+                console.log('Moodle Scroll Trigger v.1.0.3');
                 triggerIdCount = 0;
 
 		/* PREDEFINED ELEMENTS ✨👇 */
 	        /* REMOVE THE TWO SLASHS AT THE BEGINNING OF A LINE TO ACTIVATE ELEMENTS FOR SCROLL TRIGGERING */
 		/* YOU CAN CHANGE THE DIRECTION FROM LEFT TO RIGHT */
-
+		    
+		    // scrollTrigger(".sectionname", "left"); /* TRIGGER ALL TOPIC HEADERS */
+		    // scrollTrigger(".activityicon", "left"); /* TRIGGER ALL ACTIVITIY ICONS */
+		    // scrollTrigger(".activityinstance", "left"); /* TRIGGER ALL ACTIVITIY HEADERS */
+		    // scrollTrigger(".activity", "left"); /* TRIGGER ALL ACTIVITIES */
 		    // scrollTrigger(".modtype_label", "left"); /* TRIGGER ALL TEXTFIELDS */
 		    // scrollTrigger(".contentafterlink", "left"); /* TRIGGER ALL DESCRIPTIONS */
-		    // scrollTrigger(".activity", "left"); /* TRIGGER ALL ACTIVITIES */
-		    // scrollTrigger(".activityinstance", "left"); /* TRIGGER ALL ACTIVITIY HEADERS */
-		    // scrollTrigger(".sectionname", "left"); /* TRIGGER ALL TOPIC HEADERS */
 		    // scrollTrigger(".gridiconcontainer", "left"); /* TRIGGER ALL GRIDS */
 
 		    // scrollTrigger("#region-main p", "left"); /* TRIGGER ALL PARAGRAPHS */
