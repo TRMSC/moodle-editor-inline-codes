@@ -1,0 +1,63 @@
+<!-- Date and Time v.1.0 - Copyright (C) 2021, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
+
+<-- YOU CAN WRITE SOMETHING BEFORE AND BEHIND THE SPAN-PARTS OR STYLE THEM -->
+
+<span id="placeTime"></span><br>
+<span id="placeDate"></span>
+
+<script>
+    window.addEventListener('load', function(event) {
+        let jquery_load_check_interval = setInterval(function() {
+            if (window.jQuery) {
+                console.log('Date and Time: jQuery v.' + $.fn.jquery + ' loaded');
+                console.log('Date and Time: v.0.1');
+                showTime();
+                showDate();
+                clearInterval(jquery_load_check_interval);
+            } else {
+                console.log('jQuery in Moodle: new try to load jquery...');
+            }
+        }, 150);
+
+        function showTime() {
+            if ($("#placeTime").length != 0) {
+                console.log('Date and Time: Show time');
+                today = new Date();
+                let h = today.getHours();
+                let m = today.getMinutes();
+                let s = today.getSeconds();
+                m = checkTime(m);
+                s = checkTime(s);
+                document.getElementById('placeTime').innerHTML = h + ":" + m + ":" + s;
+                setTimeout(showTime, 1000);
+            }
+        }
+
+        function checkTime(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+
+        function showDate() {
+            if ($("#placeDate").length != 0) {
+                console.log('Date and Time: Show date');
+                var dayDetail = new Date();
+                var day = dayDetail.getDate();
+                var month = dayDetail.getMonth() + 1;
+                var year = dayDetail.getFullYear();
+                if (day < 10) {
+                    day = '0' + day;
+                }
+                if (month < 10) {
+                    month = '0' + month;
+                }
+                dayDetail = day + '.' + month + '.' + year;
+                document.getElementById('placeDate').innerHTML = dayDetail;
+            }
+        }
+
+    }, false);
+</script>
