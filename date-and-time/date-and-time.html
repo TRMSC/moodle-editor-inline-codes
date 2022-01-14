@@ -1,17 +1,19 @@
-<!-- Date and Time v.1.0.1 - Copyright (C) 2022, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- Date and Time v.1.0.2 - Copyright (C) 2022, TRMSC - https://trmsc1.wordpress.com/ -->
 <!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
 
-<-- YOU CAN WRITE SOMETHING BEFORE AND BEHIND THE SPAN-PARTS OR STYLE THEM -->
+<!-- YOU CAN WRITE SOMETHING BEFORE AND BEHIND THE SPAN-PARTS OR STYLE THEM -->
+<!-- YOU ALSO CAN REPLACE ALL "span" WITH e.g. "h2" TO SHOW DATE AND TIME AS CAPTIONS. -->
 
 <span id="placeTime"></span><br>
 <span id="placeDate"></span>
+   
 
 <script>
     window.addEventListener('load', function(event) {
         let jquery_load_check_interval = setInterval(function() {
             if (window.jQuery) {
                 console.log('Date and Time: jQuery v.' + $.fn.jquery + ' loaded');
-                console.log('Date and Time: v.1.0.1');
+                console.log('Date and Time: v.1.0.2');
                 showTime();
                 showDate();
                 clearInterval(jquery_load_check_interval);
