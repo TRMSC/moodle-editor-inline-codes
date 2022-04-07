@@ -1,0 +1,63 @@
+<!-- Tooltip with day control v.0.1 - Copyright (C) 2021, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
+
+<!-- THIS CODE SHOWS A TOOLTIP ON A SPECIAL DAY A WEEK (Adjust in Line 27) -->
+<!-- PLEASE USE THE UNFORMATED TEXTEDITOR -->
+
+<div id="tooltipDay">
+  <h5>
+    <strong>
+      Titel ✨
+    </strong>
+    <span class="tooltipClose" onclick="document.getElementById('tooltipDay').style.display='none';">
+      &times;
+    </span>
+  </h5>
+  <p>
+    TEXT
+  </p>
+  <a href="https://trmsc1.wordpress.com/" id="tooltipLink">
+    LINKTEXT...
+  </a>
+</div> 
+
+<script>
+  var dayCheck = new Date().getDay();
+  if (dayCheck != 0) { // THE '0' STANDS FOR SUNDAY, "1" WOULD BE MONDAY AND SO ON... FEEL FREE TO CHANGE!
+    document.getElementById("tooltipDay").style.display = "none";
+  }
+</script>
+
+<style>
+#tooltipDay {
+    padding: 20px;
+    background-color: #7e7e81f2;
+    margin-bottom: 15px;
+    color: white;
+    min-width: max-content;
+    width: 25%;
+    box-shadow: 0px 0px 6px 0px #c0c0c0;
+    position: fixed;
+    z-index: 1000;
+    right: 5px;
+    bottom: 5px;
+}
+#tooltipLink {
+      color: #90c8fa;
+}
+
+/* The close button */
+.tooltipClose {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.tooltipClose:hover {
+  color: black;
+} 
+</style>
