@@ -1,0 +1,46 @@
+<!-- Moodle Quiz TTS - Copyright (C) 2022, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
+
+<script>
+    var msg1 = new SpeechSynthesisUtterance('Schön, dass du da bist!');
+    msg1.lang = 'de';
+ 
+    function ttsButton1() {
+        window.speechSynthesis.speak(msg1);
+    }
+</script>
+<p>Hier steht ein geschriebener Text. <i class="fa fa-play-circle" onclick="ttsButton1()"></i></p>
+
+<script>
+    window.addEventListener('load', function(event) {
+        let jquery_load_check_interval = setInterval(function() {
+            if (window.jQuery) {
+                console.log('jQuery in Moodle: jQuery v.' + $.fn.jquery + ' loaded');
+                console.log('Moodle Scroll Trigger v.1.0.3');
+                triggerIdCount = 0;
+                makeId();
+                clearInterval(jquery_load_check_interval);
+            } else {
+                console.log('jQuery in Moodle: new try to load jquery...');
+            }
+        }, 150);
+
+        function makeId(trg) {
+            jQuery(trg).each(function() {
+                if (this.id == 0) {
+                    jQuery(this).attr("id", "triggerID" + triggerIdCount);
+                    trg = "#" + this.id;
+                    console.log("Scroll Trigger added: " + trg);
+                    triggerIdCount++;
+                    startTrigger(trg, trgDir);
+                } else {
+                    trg = "#" + this.id;
+                    console.log("Scroll Trigger found: " + trg);
+                    startTrigger(trg, trgDir);
+                }
+            });
+            return;
+        }
+
+    }, false);
+</script>
