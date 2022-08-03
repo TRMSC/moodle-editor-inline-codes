@@ -17,7 +17,7 @@
         }, 150);
  
         function setGreeting() {
-            var fstName = $('span.usertext.mr-1').text().split(/\s+/)[1]; /*IF THE LASTNAME WILL BE DISPLAYED TRY [0} INSTEAD OF [1] IN THIS LINE */
+            var fstName = $('.logininfo a:first-of-type').text().split(/\s+/)[1]; /*IF THE LASTNAME WILL BE DISPLAYED TRY [0} INSTEAD OF [1] IN THIS LINE */
             var textBefore = 'Hallo '; /* THE TEXT DISPLAYED BEFORE THE USERNAME */
             var textAfter = '! Schön, dass du da bist!'; /* THE TEXT DISPLAYED AFTER THE USERNAME */
             var fullText = textBefore + fstName + textAfter;
