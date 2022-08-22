@@ -1,4 +1,4 @@
-<!-- Username As Variable v.2.3 - Copyright (C) 2021, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- Username As Variable v.2.3.1 - Copyright (C) 2021, TRMSC - https://trmsc1.wordpress.com/ -->
 <!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
 
 <!-- THIS CODE ADDS THE FIRST USERNAME EVERYWHERE YOU WROTE <span class="fname"></span> IN HTML-MODE -->
@@ -8,7 +8,7 @@
         let jquery_load_check_interval = setInterval( function() {
             if ( window.jQuery ) {
                 console.log( 'Username As Variable: jQuery v.' + $.fn.jquery + ' loaded' );
-                console.log( 'Username As Variable: v.2.3' );
+                console.log( 'Username As Variable: v.2.3.1' );
                 makeFirstname(); 
                 clearInterval( jquery_load_check_interval );
             } else {
@@ -17,7 +17,7 @@
         }, 150);
 
         function makeFirstname() { 
-            var fname = $('span.usertext.mr-1').text().split(/\s+/)[1]; /*IF THE LASTNAME WILL BE DISPLAYED TRY [0} INSTEAD OF [1] IN THIS LINE */
+            var fname = $('.logininfo a:first-of-type').text().split(/\s+/)[1]; /*IF THE LASTNAME WILL BE DISPLAYED TRY [0} INSTEAD OF [1] IN THIS LINE */
             console.log('Username As Variable: firstname is ' + fname);
             $(".fname").text(fname);
             console.log('Username As Variable: firstname added to all positions');
