@@ -1,6 +1,6 @@
 <script>
 /**
- * @name Moodle Backbutton v.0.2
+ * @name Moodle Backbutton v.0.2.1
  * @description Add a back button instead of the breadcrumb within activities
  * @license GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html
  * @copyright (C) 2022, TRMSC - https://trmsc1.wordpress.com/
@@ -9,6 +9,14 @@
  * TESTED WITH MOODLE 4.0.4 BOOST
  *
  */
+let createBackbutton = function (backbutton) {
+    let buttoncontainer = document.createElement('div');
+    buttoncontainer.classList.add('breadcrumb-item');
+    buttoncontainer.style.margin = "8px 0px";
+    buttoncontainer.innerHTML = backbutton;
+    document.getElementById('page-header').prepend(buttoncontainer);
+    document.getElementById("page-navbar").style.display = "none";
+};
 (function() {
     let withinActivity = document.getElementsByClassName('path-mod');
     let withinCourse = document.getElementsByClassName('path-course-view');
@@ -33,13 +41,4 @@
         }
     }
 })();
-
-function createBackbutton(backbutton) {
-    let buttoncontainer = document.createElement('div');
-    buttoncontainer.classList.add('breadcrumb-item');
-    buttoncontainer.style.margin = "8px 0px";
-    buttoncontainer.innerHTML = backbutton;
-    document.getElementById('page-header').prepend(buttoncontainer);
-    document.getElementById("page-navbar").style.display = "none";
-}
 </script>
