@@ -1,32 +1,76 @@
 <script>
-/**
- * @name Moodle Backbutton v.0.1
- * @description Add a back button instead of the breadcrumb within activities
- * @license GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html
- * @copyright (C) 2022, TRMSC - https://trmsc1.wordpress.com/
- *
- * PLEASE TRY THIS CODE CAREFULLY WITHIN YOUR INDIVIDUAL MOODLE INSTANCE
- * TESTED WITH MOODLE 4.0.4 BOOST
- *
- */
-(function() {
-    let sitecheck = document.getElementsByClassName('path-mod');
-    if (sitecheck.length > 0) {
-        let check = document.getElementsByClassName('path-mod')[0].classList;
-        for (let i = 0; i < check.length; i++) {
-            if (check[i].includes('course-')) {
-                let coursenumber = check[i].replace(/c.+-/g, "");
-                const backbutton = 
-                    '<a href="/moodle/course/view.php?id=' + coursenumber + '">zurück zum Kurs</a>';
-                let buttoncontainer = document.createElement('div');
-                buttoncontainer.classList.add('breadcrumb-item');
-                buttoncontainer.style.margin = "8px 0px";
-                buttoncontainer.innerHTML = backbutton;
-                document.getElementById('page-header').prepend(buttoncontainer);
-                document.getElementById("page-navbar").style.display = "none";
-                break;
+    window.addEventListener('load', function(event) {
+        let jquery_load_check_interval = setInterval(function() {
+            if (window.jQuery) {
+                console.log('jQuery in Moodle: jQuery v.' + $.fn.jquery + ' loaded');
+                prepareTable();
+                clearInterval(jquery_load_check_interval);
+            } else {
+                console.log('jQuery in Moodle: new try to load jquery...');
+            }
+        }, 150);
+
+        function prepareTable() {
+            sessions = $('.category[data-categoryid="4"]');
+            $('#sessions').prepend(sessions);
+            $('#sessions h3').css('display', 'none');
+            for (let block = 1; block <= 4; block++) {
+                let selector = "#sessions .category .category:nth-of-type(" + block + ") .coursebox";
+                prepareCourses(selector);
             }
         }
-    }
-})();
+
+        function prepareCourses(selector) {
+            let check = $(selector);
+            for (let i = 0; i < check.length; i++) {
+                let room;
+                switch (i) {
+                    case 0:
+                        room = "B030"; break;
+                    case 1: 
+                        room = "B032"; break;
+                    case 2:
+                        room = "B129"; break;
+                    case 3: 
+                        room = "B338"; break;
+                    case 4:
+                        room = "B341"; break;
+                    case 5: 
+                        room = "B346"; break;
+                    case 6:
+                        room = "B437"; break;
+                    case 7: 
+                        room = "B439"; break;   
+                    case 8: 
+                        room = "B449"; break;                        
+                }
+                if (check[i].textContent.includes('FREI')) {
+                    //let room = check[i].children[0].children[0].children[0].text.split('-')[1];
+                    check[i].children[0].children[1].style.display = 'none';
+                    check[i].children[0].children[0].children[0].text = 'Raum ' + room + ' buchen';
+                    check[i].children[0].children[0].children[0].classList.add('btn', 'btn-secondary','btn-sm');
+                } else {
+                    //let roomcontainer = '<span class="room">' + room + '</span>';
+                    //check[i].children[0].children[0].children[0].append(roomcontainer);
+                    roomcontainer = document.createElement("span")
+                    roomcontainer.classList.add("room");
+                    roomcontainer.textContent = room;
+                    check[i].children[0].children[0].children[0].append(roomcontainer);
+                }
+            }
+        }
+
+    }, false);
+
+    let checkDisplay = function() {
+        let sessiondisplay = $('#sessions').css('display');
+        switch (sessiondisplay) {
+            case 'flex':
+                $('#sessions').css('display', 'none');
+                break;
+            case 'none':
+                $('#sessions').css('display', 'flex');
+                break;
+            }
+    };
 </script>
