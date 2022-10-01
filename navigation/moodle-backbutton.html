@@ -3,12 +3,21 @@
         let jquery_load_check_interval = setInterval(function() {
             if (window.jQuery) {
                 console.log('jQuery in Moodle: jQuery v.' + $.fn.jquery + ' loaded');
-                prepareTable();
+                checkSite();
                 clearInterval(jquery_load_check_interval);
             } else {
                 console.log('jQuery in Moodle: new try to load jquery...');
             }
         }, 150);
+
+        function checkSite() {
+            let sitecheck = document.body.classList;
+            for (let i = 0; i < sitecheck.length; i++) {
+                if (sitecheck[i].includes('pagelayout-frontpage')) {
+                    prepareTable();
+                }
+            }
+        }
 
         function prepareTable() {
             sessions = $('.category[data-categoryid="4"]');
