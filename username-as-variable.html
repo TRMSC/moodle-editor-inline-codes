@@ -1,26 +1,23 @@
-<!-- Username As Variable v.2.3.1 - Copyright (C) 2021, TRMSC - https://trmsc1.wordpress.com/ -->
-<!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
-
-<!-- THIS CODE ADDS THE FIRST USERNAME EVERYWHERE YOU WROTE <span class="fname"></span> IN HTML-MODE -->
- 
 <script>
-    window.addEventListener( 'load', function( event ) {
-        let jquery_load_check_interval = setInterval( function() {
-            if ( window.jQuery ) {
-                console.log( 'Username As Variable: jQuery v.' + $.fn.jquery + ' loaded' );
-                console.log( 'Username As Variable: v.2.3.1' );
-                makeFirstname(); 
-                clearInterval( jquery_load_check_interval );
-            } else {
-                console.log( 'Username As Variable: new try to load jquery...' );
-            }
-        }, 150);
 
-        function makeFirstname() { 
-            var fname = $('.logininfo a:first-of-type').text().split(/\s+/)[1]; /*IF THE LASTNAME WILL BE DISPLAYED TRY [0} INSTEAD OF [1] IN THIS LINE */
-            console.log('Username As Variable: firstname is ' + fname);
-            $(".fname").text(fname);
-            console.log('Username As Variable: firstname added to all positions');
-        }
-    }, false );
+/**
+ * THIS CODE ADDS USERS FIRSTNAME EVERYWHERE ON THE MOODLE PAGE YOU WROTE THE FOLLOWING LINE IN HTML-MODE:
+ * <span class="fname"></span> 
+ *
+ * @name Username as variable
+ * @version 2.4
+ * @license GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html
+ * @copyright (C) 2022, TRMSC - https://trmsc1.wordpress.com/
+ *
+ *
+ */
+window.onload = function() {
+    let fname = document.getElementsByClassName('logininfo');
+    fname = fname[1].getElementsByTagName('a')[0].text.split(/\s+/)[0];
+    let target = document.getElementsByClassName('fname');
+    for (let i = 0; i < target.length; i++) {
+        target[i].textContent = fname;
+    }
+}
+
 </script>
