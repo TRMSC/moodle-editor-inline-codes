@@ -1,4 +1,4 @@
-<!-- Individual Greeting v.2.1.2 - Copyright (C) 2022, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- Individual Greeting v.2.1.3 - Copyright (C) 2022, TRMSC - https://trmsc1.wordpress.com/ -->
 <!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
  
 <!-- THIS CODE SHOWS A TEXT BEFORE AND AFTER THE INDIVIDUAL USERNAME ON TOP OF THE COURSE-->
@@ -8,7 +8,7 @@
         let jquery_load_check_interval = setInterval( function() {
             if ( window.jQuery ) {
                 console.log( 'Individual Greeting: jQuery v.' + $.fn.jquery + ' loaded' );
-                console.log( 'Individual Greeting: v.2.1.1' );
+                console.log( 'Individual Greeting: v.2.1.3' );
                 setGreeting(); 
                 clearInterval( jquery_load_check_interval );
             } else {
@@ -17,10 +17,20 @@
         }, 150);
  
         function setGreeting() {
-            var fstName = $('.logininfo a:first-of-type').text().split(/\s+/)[1]; /*IF THE LASTNAME WILL BE DISPLAYED TRY [0} INSTEAD OF [1] IN THIS LINE */
-            var textBefore = 'Hallo '; /* THE TEXT DISPLAYED BEFORE THE USERNAME */
-            var textAfter = '! Schön, dass du da bist!'; /* THE TEXT DISPLAYED AFTER THE USERNAME */
-            var fullText = textBefore + fstName + textAfter;
+            /* SEE THE NEXT TWO CODE LINES AND ADJUST ACCORDING TO YOUR MOODLE.
+               DEPENDING ON YOUR MOODLE-SETTINGS THE FIRST NAME IS IN [0] OR [1] */
+            var fstName = $('.logininfo a:first-of-type').text().split(/\s+/)[0];
+            var lstName = $('.logininfo a:first-of-type').text().split(/\s+/)[1];
+            /* THE TEXT DISPLAYED BEFORE THE USERNAME */
+            var textBefore = 'Hallo ';
+            /* THE TEXT DISPLAYED AFTER THE USERNAME */
+            var textAfterInformal = '! Schön, dass du da bist!';
+            var textAfterFormal   = '! Schön, dass Sie hier sind!';
+            /* USE THE CODE-LINE THAT FITS BEST TO YOUR SITE
+               var fullText = textBefore + fstName + textAfterInformal;
+               var fullText = textBefore + fstName + ' ' + lstName + textAfterFormal;
+            */
+            var fullText = textBefore + fstName + textAfterInformal;
             console.log('Individual Greeting: ' + fullText);
             $('div[role=main]').prepend('<h2>' + fullText + '</h2>');
         }
