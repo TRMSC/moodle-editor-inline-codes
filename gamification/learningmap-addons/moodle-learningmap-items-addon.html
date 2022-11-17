@@ -1,0 +1,81 @@
+<script>
+
+/**
+ * Implementing gamification elements to the moodle learningmap activity
+ * 
+ * @name Moodle Learningmap Items Addon v.0.1
+ * @license GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html
+ * @copyright (C) 2022, TRMSC - https://trmsc1.wordpress.com/
+ * 
+ * @description Put the code in a <>-textfield and use the settings part within the code (LINE 21) for individualisation:
+ * 
+ * 1. Add the id by right clicking on the learningmap and searching for the id of the 'modtype_learningmap' element
+ * 2. Adjust color and size for the elements if you want to
+ * 3. Copy the {...}-parts for adding more elements (the last one don't get a comma after '}' )
+ * 4. Active: Turn to 'false' if you don't want to use that element at the moment
+ * 5. Symbols: Use the icons from https://fontawesome.bootstrapcheatsheets.com/ (without the '.')
+ * 6. Points: Every position of a number array stands for the points users will see on that visited places
+ * 
+ */
+
+ // SETTINGS
+ let id = 'module-30859';
+ let color = '#575757';
+ let size = 'x-large';
+ let items = [
+    {
+        active: true,
+        symbol: 'fa-flask',
+        points: [3, 7, 12]
+    },
+    {
+        active: true,
+        symbol: 'fa-leaf',
+        points: [8, 15, 23]
+    },
+    {
+        active: true,
+        symbol: 'fa-star',
+        points: [2, 10, 12]
+    },
+    {
+        active: false,
+        symbol: '',
+        points: []
+    }
+ ];
+
+ // YOU DON'T HAVE TO DO ANYTHING FROM HERE 😊
+
+ // CREATE CONTAINER
+ let container = document.createElement('div');
+ let learningmap = document.getElementById(id);
+ learningmap = learningmap.getElementsByClassName('activity-item')[0];
+ learningmap.append(container);
+ container.style.display = 'flex';
+ container.style.justifyContent = 'flex-end';
+ container.style.gap = '12px';
+ container.style.color = color;
+ container.style.fontSize = size;
+
+ // CHECK PLACES
+ let visited = true;
+ let places = learningmap.getElementsByClassName('learningmap-place-visited').length;
+ places > 0 ? places -= 1 : visited = false;
+
+ // CREATE ELEMENTS
+ for (let i = 0; i < items.length; i++) {
+    if (items[i].active) {
+        itemContainer = document.createElement('div');
+        itemSymbol = document.createElement('i');
+        itemSymbol.classList.add('fa', items[i].symbol);
+        itemSymbol.style.marginRight = '5px';
+        itemContainer.append(itemSymbol);
+        itemPoints = document.createElement('span');
+        itemPoints.textContent = visited ? items[i].points[places] : '0';
+        itemContainer.append(itemPoints);
+        container.append(itemContainer);
+    }
+ };
+
+</script>
