@@ -13,39 +13,52 @@ if (currentUrl.includes('/moodle/course/view.php')) {
       const htmlDoc = parser.parseFromString(html, 'text/html');
       const grades = htmlDoc.querySelectorAll('.column-grade');
       const percentage = htmlDoc.querySelectorAll('.column-percentage');
-      const values = getValues(grades);
+      const values = getValues(grades, percentage);
 
       const points = values.points;
-      console.log(points);
+      console.log('points: ' + points);
 
       const amount = values.amount;
-      console.log(amount);
+      console.log('amount: ' + amount);
+
+      const percentAll = values.percent;
+      const percent = values.percent / amount;
+      console.log('percent: ' + percent);
+
+      let level = Math.floor(1 + Math.log2(percentAll / 100 + 1) * 0.7);
+      console.log('level: ' + level);
 
       const potency = points / grades.length;
-      console.log(potency);
+      console.log('potency: ' + potency);
 
       const maxCoins = 8;
       let coins = 0;
-      for (let i = 0; i < amount; i++) {
-        coins += Math.round(Math.sin(i) * maxCoins + 1.2 * potency / 100 * maxCoins);
-        console.log(coins);
+      if (amount > 0) {
+        for (let i = 0; i < amount; i++) {
+          coins += Math.round(Math.abs(Math.sin(i)) * maxCoins + 1.2 * potency / 100 * maxCoins);
+          console.log('coins ' + i + ': ' + coins);
+        }
+        console.log('final coins: ' + coins);
       }
-      console.log(coins);
+      
 
     });
 }
 
-function getValues(grades) {
+function getValues(grades, percentage) {
   let points = 0;
+  let percent = 0;
   let amount = 0;
-  for (let grade of grades) {
-    const gradeValue = parseFloat(grade.textContent.replace(',', '.'));
+  for (let i = 0; i < grades.length; i++) {
+    const gradeValue = parseFloat(grades[i].textContent.replace(',', '.'));
+    const percentageValue = parseFloat(percentage[i].textContent.replace(',', '.').replace(' %', ''));
     if (!isNaN(gradeValue) && gradeValue >= 0) {
       points += gradeValue;
+      percent += percentageValue;
       amount += 1;
     }
   }
-  return {points, amount};
+  return {points, percent, amount};
 }
 
 </script>
