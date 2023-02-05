@@ -15,14 +15,14 @@ if (currentUrl.includes('/moodle/course/view.php')) {
       const percentage = htmlDoc.querySelectorAll('.column-percentage');
       const values = getValues(grades, percentage);
 
-      const points = values.points;
+      const points = Math.round(values.points);
       console.log('points: ' + points);
 
       const amount = values.amount;
       console.log('amount: ' + amount);
 
       const percentAll = values.percent;
-      const percent = values.percent / amount;
+      const percent = Math.round(values.percent / amount);
       console.log('percent: ' + percent);
 
       let level = Math.floor(1 + Math.log2(percentAll / 100 + 1) * 0.7);
@@ -41,9 +41,11 @@ if (currentUrl.includes('/moodle/course/view.php')) {
         console.log('final coins: ' + coins);
       }
       
+      implementElements(level, amount, percent, points, coins);
 
     });
 }
+
 
 function getValues(grades, percentage) {
   let points = 0;
@@ -59,6 +61,40 @@ function getValues(grades, percentage) {
     }
   }
   return {points, percent, amount};
+}
+
+
+function implementElements(level, amount, percent, points, coins) {
+  const elements = [
+    { text: `<i class="fa fa-check"></i> ${amount}`, class: "col" },
+    { text: `<i class="fa fa-trophy"></i> ${level}`, class: "col" },
+    { text: `<i class="fa fa-pie-chart"></i> ${percent}%`, class: "col" },
+    { text: `<i class="fa fa-th"></i> ${points}`, class: "col" },
+    { text: `<i class="fa fa-database"></i> ${coins}`, class: "col" }
+  ];
+
+  //const main = document.querySelector('[role="main"]');
+  const main = document.querySelector('#page-header');
+
+  const row = document.createElement("div");
+  row.classList.add("row");
+  row.style.marginBottom = "15px";
+  row.style.fontSize = "x-large";
+  row.style.fontFamily = "fantasy";
+  row.style.color = "var(--dark)";
+  row.style.textShadow = "4px 4px 7px var(--gray)";
+
+  for (const element of elements) {
+    const col = document.createElement("div");
+    col.classList.add(element.class);
+    col.innerHTML = element.text;
+    col.style.textAlign = "center";
+
+    row.appendChild(col);
+  }
+
+  //main.insertAdjacentElement("afterbegin", row);
+  main.insertAdjacentElement("beforeend", row);
 }
 
 </script>
