@@ -1,0 +1,24 @@
+<!-- Magic spell v.1.0 - Copyright (C) 2021, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
+
+<!-- Put the code in an activity description for showing the main content only after clicking the button -->
+<!-- You can prepare everything you want to before adding the magic code -->
+
+<p>
+  <button class="btn btn-primary" onclick="showMain()">
+    Zauberspruch anwenden
+  </button>
+</p>
+<style>
+  div[role="main"] {
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+  }
+</style>
+<script>
+function showMain() {
+    var main = document.querySelector("div[role='main']");
+    main.style.opacity = "1";
+    main.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
