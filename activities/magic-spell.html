@@ -1,23 +1,36 @@
-<!-- Magic spell v.1.0 - Copyright (C) 2021, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- Magic spell v.1.1 - Copyright (C) 2023, TRMSC - https://trmsc1.wordpress.com/ -->
 <!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
 
 <!-- Put the code in an activity description for showing the main content only after clicking the button -->
 <!-- You can prepare everything you want to before adding the magic code -->
 
-<p>
+<!-- USE THE UNFORMATED TEXTEDITOR FOR ADDING THIS CODE -->
+
+<p class="magic-spell">
   <button class="btn btn-primary" onclick="showMain()">
     Zauberspruch anwenden
   </button>
 </p>
+
 <style>
-  div[role="main"] {
+  .path-mod div[role="main"] {
     opacity: 0;
     transition: opacity 1.2s ease-in-out;
   }
+  .path-course .magic-spell {
+    display: none;
+  }
 </style>
+
 <script>
-function showMain() {
-    var main = document.querySelector("div[role='main']");
+/**
+ * Show content within activity site and scroll to its position
+ *
+ * @function showMain
+ * @returns {void}
+ */
+showMain = () => {
+    const main = document.querySelector(".path-mod div[role='main']");
     main.style.opacity = "1";
     main.scrollIntoView({ behavior: 'smooth' });
 }
