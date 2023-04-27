@@ -1,0 +1,29 @@
+<!-- Stash Inventory v.1.0 - Copyright (C) 2023, TRMSC - https://trmsc1.wordpress.com/ -->
+<!-- GNU General Public Licence 3.0 - http://www.gnu.de/documents/gpl-3.0.en.html -->
+
+<!-- Reflect the stash inventory to the position of this code. -->
+
+<div id="inventar"></div>
+
+<script>
+const stashArea = document.querySelector('[id^="stash-area-"] .item-list');
+if (stashArea) {
+  const container = document.createElement('div');
+  container.innerHTML = stashArea.innerHTML;
+  const inventar = document.querySelector('#inventar');
+  inventar.appendChild(container);
+  inventar.style.padding = "0px 30px 20px 30px";
+
+  const items = container.querySelectorAll('.block-stash-item');
+  items.forEach(item => {
+    item.addEventListener('click', e => {
+      const originalItem = stashArea.querySelector(`[data-id="${e.currentTarget.dataset.id}"]`);
+      if (originalItem) {
+        originalItem.click();
+      }
+    });
+  });
+} else {
+  console.log("Das Element '#stash-area-1 .item-list' existiert nicht.");
+}
+</script>
