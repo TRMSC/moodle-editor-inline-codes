@@ -1,0 +1,34 @@
+<script>
+  
+  /**
+  * Add course index to the course
+  * Tested in Moodle 4.1.4 BOOST Theme
+  * 
+  * @function
+  * @author TRMSC
+  * @license GNU GPL 3.0
+  */
+(() => {  
+  
+    let buttonToCopy = document.querySelector(".drawer-left-toggle");
+    let targetSection = document.querySelector("#section-0");
+    targetSection.appendChild(buttonToCopy.cloneNode(true));
+    // targetSection.prepend(buttonToCopy.cloneNode(true)); /*Alternatively*/
+  
+})();
+  
+</script>
+
+<style>
+  
+/* Course index */
+#region-main button[data-target="theme_boost-drawers-courseindex"] {
+    width: 100%;
+    background-color: var(--primary);
+    border-radius: 0px;
+}
+#region-main button[data-target="theme_boost-drawers-courseindex"]:hover {
+    background-color: var(--secondary)!important;
+}
+  
+</style>
