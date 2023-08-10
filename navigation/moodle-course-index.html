@@ -1,3 +1,5 @@
+<div id="courseindex-clone"></div>
+
 <script>
   
   /**
@@ -12,9 +14,9 @@
   
     // Clone button
     let buttonToCopy = document.querySelector(".drawer-left-toggle");
-    let targetSection = document.querySelector("#section-0");
+    let targetSection = document.querySelector("#courseindex-clone");
+    // let targetSection = document.querySelector("#section-0");  /*Alternatively*/
     targetSection.appendChild(buttonToCopy.cloneNode(true));
-    // targetSection.prepend(buttonToCopy.cloneNode(true)); /*Alternatively*/
 
     // Remove tooltip
     let btn = document.querySelector('#region-main button[data-target="theme_boost-drawers-courseindex"]');
